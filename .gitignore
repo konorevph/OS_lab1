@@ -27,3 +27,8 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+/src/ProcessorSimulator/OperatingSystem.java
+/src/ProcessorSimulator/OperationInfo.java
+/src/ProcessorSimulator/Output.java
+/src/ProcessorSimulator/Process.java
+/src/ProcessorSimulator/Processor.java

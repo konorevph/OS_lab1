@@ -6,8 +6,8 @@ public class Processor {
     private OperationInfo operation;
 
     public String toString(){
-        if(process == null) return "Процессор пуст";
-        return process.getName();
+        if(process == null) return "Процессор пуст ";
+        return process.getName() + " ";
     }
 
     public Processor(OperatingSystem operatingSystem){
@@ -23,6 +23,13 @@ public class Processor {
         return process == null;
     }
 
+    public OperationInfo getOperation(){
+        return operation;
+    }
+
+    public Process getProcess(){
+        return process;
+    }
     public void calculation() {
         if (operation.getValue() > 0) {
             operation.setValue(operation.getValue() - 1);

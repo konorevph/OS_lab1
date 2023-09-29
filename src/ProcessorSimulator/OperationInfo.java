@@ -25,11 +25,11 @@ class OperationInfo {
     }
 
     public void print(){
-        if(type == 0){
-            System.out.println("Процессор: " + value);
+        if(type == -1){
+            System.out.print("Занимаем процесс на " + value + " ");
         }
         else {
-            System.out.println("Вывод на I/O" + value);
+            System.out.print("Вывод на I/O" + value);
         }
     }
 

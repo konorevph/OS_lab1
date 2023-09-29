@@ -22,7 +22,7 @@ public class OperatingSystem {
         outPuts = new Output[countOfOutputs];
         int[] timesForOutputs = { 2, 3, 5};
         for(int i = 0; i < countOfOutputs; i ++){
-            outPuts[i] = new Output(this, timesForOutputs[i],  "I/O" + (i));
+            outPuts[i] = new Output(this, timesForOutputs[i],  "I/O" + (i + 1));
         }
 
         processor = new Processor(this);
@@ -35,7 +35,7 @@ public class OperatingSystem {
     }
 
     public void createProcess(String str){
-        readyProcesses.add(new Process(this, str, "P" + countOfProcesses++));
+        readyProcesses.add(new Process(this, str, "P" + (++countOfProcesses)));
     }
     public void ProcessesCalculation() {
         while (countOfDoneProcesses < countOfProcesses){
@@ -44,19 +44,38 @@ public class OperatingSystem {
             if(!readyProcesses.isEmpty() && processor.isEmpty())
                 processor.putProcess(readyProcesses.removeFirst());
 
-            if(!processor.isEmpty())
+
+            if(pointOfTime == 30){
+                pointOfTime = pointOfTime;
+            }
+            if(!processor.isEmpty()){
+                if(processor.getOperation().getValue() == 0 && !readyProcesses.isEmpty()){
+                    if(!processor.getProcess().isEmpty()) putProcessIntoWaitList(processor.getProcess());
+                    else boostCountOfDoneProcesses();
+                    processor.putProcess(readyProcesses.removeFirst());
+
+                }
                 processor.calculation();
+            }
+
 
             System.out.print(processor);
 
+
+
             if(!waitProcesses.isEmpty()){
-                System.out.println(waitProcesses.getFirst());
                 waitProcesses.forEach( process -> {
                     int index = process.getCurrentOperation().getValue();
 
                     if(outPuts[index].isEmpty()) {
                         outPuts[index].putProcess(process);
                     }
+
+                    if(outPuts[index].isLastOperation()){
+                        outPuts[index].ShowProcess();
+                        outPuts[index].putProcess(process);
+                    }
+
                 });
             }
 

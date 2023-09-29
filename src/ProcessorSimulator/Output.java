@@ -18,6 +18,7 @@ public class Output {
         this.process = process;
         operation = process.pollCurrentOperation();
         currentQuantityOperations = 0;
+        operatingSystem.removeProcessFromWaitList(process);
     }
 
     public void ShowProcess(){
@@ -26,9 +27,8 @@ public class Output {
             System.out.print(" " + name + "[" + process.getName() + "]" + " ");
         }
         else  {
-            operatingSystem.removeProcessFromWaitList(process);
             if (!process.isEmpty()){
-                operatingSystem.putProcessIntoWaitList(process);
+                operatingSystem.putProcessIntoReadyList(process);
             }
             else {
                 operatingSystem.boostCountOfDoneProcesses();
@@ -39,6 +39,10 @@ public class Output {
 
     public void cleanOutput(){
         process = null;
+    }
+
+    public boolean isLastOperation(){
+        return currentQuantityOperations == QUANTITY_OPERATIONS;
     }
 
     public boolean isEmpty(){

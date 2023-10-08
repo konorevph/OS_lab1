@@ -41,6 +41,7 @@ public class Processor {
             }
             else {
                 operatingSystem.boostCountOfDoneProcesses();
+//                System.out.println(process.getName());
             }
             cleanProcessor();
         }

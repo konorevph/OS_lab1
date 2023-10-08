@@ -40,10 +40,14 @@ public class OperatingSystem {
         readyProcesses.add(new Process(this, str, "P" + (++countOfProcesses)));
     }
     public void ProcessesCalculation() {
+        int count1 = 0, count2 = 0;
         while (countOfDoneProcesses < countOfProcesses){
             System.out.print(pointOfTime++ + ": ");
 
             for (Output outPut : outPuts) {
+                if(outPut != null && outPut.getProcessName().contains("P6")){
+                    count2 += 1;
+                }
                 outPut.ShowProcess();
             }
 
@@ -64,6 +68,7 @@ public class OperatingSystem {
                     outPuts[index].putProcess(waitProcesses.get(i));
                 }
                 else {
+                    System.out.print(" Приостановка ожидания для " + waitProcesses.get(i).toString() + " ");
                     i++;
                 }
             }
@@ -72,8 +77,25 @@ public class OperatingSystem {
                 System.out.print(output);
             }
 
+            System.out.print(" W[");
+            for (Process process : waitProcesses){
+                if (process.getName().contains("P6")){
+                    count2 += 1;
+                }
+                System.out.print(process + ",");
+            }
+            System.out.print("]");
+            System.out.print(" R[");
+            for (Process process : readyProcesses) {
+                if (process.getName().contains("P6")){
+                    count1 += 1;
+                }
+                System.out.print(process + ",");
+            }
+            System.out.print("]");
             System.out.println();
         }
+        System.out.print(count1);
     }
 
     public void removeProcessFromWaitList(Process process){

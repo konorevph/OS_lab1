@@ -7,6 +7,10 @@ public class Output {
     private OperatingSystem operatingSystem;
     private int QUANTITY_OPERATIONS, currentQuantityOperations;
 
+    public String getProcessName(){
+        if (process == null) return "";
+        return process.getName();
+    }
     private OperationInfo operation;
     public Output( OperatingSystem operatingSystem, int QUANTITY_OPERATIONS , String name){
         this.name = name;

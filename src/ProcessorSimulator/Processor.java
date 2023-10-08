@@ -7,7 +7,7 @@ public class Processor {
 
     public String toString(){
         if(process == null) return "Процессор пуст ";
-        return process.getName() + " ";
+        return process.getName() + '(' + operation.getValue() + ')' +" ";
     }
 
     public Processor(OperatingSystem operatingSystem){
@@ -31,7 +31,8 @@ public class Processor {
         return process;
     }
     public void calculation() {
-        if (operation.getValue() > 0) {
+        if(operation == null || process == null) return;
+        if (operation.getValue() > 1) {
             operation.setValue(operation.getValue() - 1);
         }
         else {

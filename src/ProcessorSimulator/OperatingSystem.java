@@ -4,20 +4,19 @@ import java.util.LinkedList;
 
 public class OperatingSystem {
 
-    private int MAX_EMPLOYED_OUTPUTS;
+
     private int countOfProcesses;
     private int countOfDoneProcesses;
     private LinkedList<Process> readyProcesses;
     private LinkedList<Process> waitProcesses;
-    private Processor processor;
+    private Processor[] processors;
     private Output[] outPuts;
 
     private int pointOfTime;
 
-    public OperatingSystem(int countOfOutputs, int maxEmployedOutputs){
+    public OperatingSystem(int countOfOutputs, int CountOfProcessors){
 
 
-        MAX_EMPLOYED_OUTPUTS = maxEmployedOutputs;
 
         outPuts = new Output[countOfOutputs];
         int[] timesForOutputs = { 2, 3, 5};
@@ -25,7 +24,10 @@ public class OperatingSystem {
             outPuts[i] = new Output(this, timesForOutputs[i],  "I/O" + (i + 1));
         }
 
-        processor = new Processor(this);
+        processors = new Processor[CountOfProcessors];
+        for(int i = 0; i < processors.length; i++){
+            processors[i] = new Processor(this);
+        }
         readyProcesses = new LinkedList<>();
         waitProcesses = new LinkedList<>();
 
@@ -41,48 +43,33 @@ public class OperatingSystem {
         while (countOfDoneProcesses < countOfProcesses){
             System.out.print(pointOfTime++ + ": ");
 
-            if(!readyProcesses.isEmpty() && processor.isEmpty())
-                processor.putProcess(readyProcesses.removeFirst());
-
-
-            if(pointOfTime == 30){
-                pointOfTime = pointOfTime;
+            for (Output outPut : outPuts) {
+                outPut.ShowProcess();
             }
-            if(!processor.isEmpty()){
-                if(processor.getOperation().getValue() == 0 && !readyProcesses.isEmpty()){
-                    if(!processor.getProcess().isEmpty()) putProcessIntoWaitList(processor.getProcess());
-                    else boostCountOfDoneProcesses();
+
+            for(Processor processor : processors){
+                processor.calculation();
+
+                if(!readyProcesses.isEmpty() && processor.isEmpty())
                     processor.putProcess(readyProcesses.removeFirst());
 
-                }
-                processor.calculation();
+                System.out.print(processor);
             }
 
 
-            System.out.print(processor);
+            for(int i = 0; i < waitProcesses.size();){
+                int index = waitProcesses.get(i).getCurrentOperation().getValue() - 1;
 
-
-
-            if(!waitProcesses.isEmpty()){
-                waitProcesses.forEach( process -> {
-                    int index = process.getCurrentOperation().getValue();
-
-                    if(outPuts[index].isEmpty()) {
-                        outPuts[index].putProcess(process);
-                    }
-
-                    if(outPuts[index].isLastOperation()){
-                        outPuts[index].ShowProcess();
-                        outPuts[index].putProcess(process);
-                    }
-
-                });
+                if(outPuts[index].isEmpty()) {
+                    outPuts[index].putProcess(waitProcesses.get(i));
+                }
+                else {
+                    i++;
+                }
             }
 
-            for(int i = 0; i < outPuts.length; i++){
-                if(!outPuts[i].isEmpty()){
-                    outPuts[i].ShowProcess();
-                }
+            for (Output output : outPuts){
+                System.out.print(output);
             }
 
             System.out.println();

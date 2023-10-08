@@ -7,10 +7,9 @@
     <list default="true" id="a22e27dc-c341-4a2f-8db0-902081399d0d" name="Changes" comment="Creating based on list algorithm">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ProcessorSimulator/OperatingSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ProcessorSimulator/OperatingSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ProcessorSimulator/OperationInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ProcessorSimulator/OperationInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ProcessorSimulator/Output.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ProcessorSimulator/Output.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ProcessorSimulator/Process.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ProcessorSimulator/Process.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ProcessorSimulator/Processor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ProcessorSimulator/Processor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -44,9 +43,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+    &quot;last_opened_file_path&quot;: &quot;C:/Programming/Java/C3_lab1&quot;
   }
 }</component>
   <component name="RunManager">
@@ -130,11 +127,6 @@
           <properties class="java.util.ConcurrentModificationException" package="java.util" />
           <option name="timeStamp" value="6" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/ProcessorSimulator/OperatingSystem.java</url>
-          <line>48</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

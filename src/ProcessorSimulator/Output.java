@@ -22,9 +22,9 @@ public class Output {
     }
 
     public void ShowProcess(){
-        if (currentQuantityOperations < QUANTITY_OPERATIONS) {
+        if (process == null) return;
+        if (currentQuantityOperations < QUANTITY_OPERATIONS - 1) {
             currentQuantityOperations += 1;
-            System.out.print(" " + name + "[" + process.getName() + "]" + " ");
         }
         else  {
             if (!process.isEmpty()){
@@ -35,6 +35,11 @@ public class Output {
             }
             cleanOutput();
         }
+    }
+
+    public String toString(){
+        if (process == null) return "";
+        return " " + name + "[" + process.getName() + "]" + " ";
     }
 
     public void cleanOutput(){
